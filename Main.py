@@ -1,21 +1,19 @@
 from ETFInfo import *
 from FinClasses import *
 from FinClasses import *
+from ExcelTools import *
 
-keys = ["SMH"]
-
-def main(keys):
-    ETFlist = []
-    for key in keys:
-        newETF = ETF(key)
-        holdings = getETFInfo(newETF.getTicker())
-        newETF.setHoldings(holdings)
-        ETFlist.append(newETF)
-    for etf in ETFlist:
-        print("INFO FOR:", etf.getTicker())
-        for holding in etf.getHoldings():
-            print(holding.getTicker(), holding.getWeight())
-
+def main(fileName):
+    etfList = importFromExcel(fileName)
+    for etf in etfList:
+        holdings = getETFInfo(etf.getTicker())
+        etf.setHoldings(holdings)
+    for etf in etfList:
+        weight = 0.0
+        for stock in etf.getHoldings():
+            weight += stock.getWeight()
+        print(etf.getTicker(), weight)
+        print("--------------------------")
 
 
-main(keys)
+main("Current Portfolio.xlsx")
