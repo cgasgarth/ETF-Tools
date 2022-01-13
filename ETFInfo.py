@@ -36,7 +36,7 @@ def getTotalWeight(ETFTicker, stockList):
     weight = 0.0
     for stock in stockList:
         weight += stock.getWeight()
-    print("Percent of fund obtained:", ETFTicker, str(weight) + "%")
+    print("Percent of fund obtained:", ETFTicker, str(round(weight, 2)) + "%")
     print("----------------------------------------------------")
 
 def getETFInfo(ETFTicker):

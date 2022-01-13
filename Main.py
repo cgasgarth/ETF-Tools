@@ -14,7 +14,7 @@ def main(fileName):
     stockWeights = totalWeights(ETFList)
     for stock in stockWeights:
         if stock.getWeight() > 1:
-            print(stock.getTicker(), str(stock.getWeight()) + "%")
+            print(stock.getName(), stock.getTicker(), str(round(stock.getWeight(), 2)) + "%")
 
 
 
