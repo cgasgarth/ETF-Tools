@@ -20,17 +20,30 @@ def getName(text):
     else:
         return text
         
+def getTicker(text):
+    if text.find(" ") != -1:
+        return text[0: text.find(" ")]
+    else:
+        return text
+
 def getWeight(text):
     if text == "NA":
         return 0.0
     else:
         return float(text)
 
-def getETFInfo(key):
+def getTotalWeight(ETFTicker, stockList):
+    weight = 0.0
+    for stock in stockList:
+        weight += stock.getWeight()
+    print("Percent of fund obtained:", ETFTicker, str(weight) + "%")
+    print("----------------------------------------------------")
+
+def getETFInfo(ETFTicker):
     url = "https://www.zacks.com/funds/etf/{}/holding"
     with requests.Session() as req:
         req.headers.update(headers)
-        r = req.get(url.format(key))
+        r = req.get(url.format(ETFTicker))
         print(f"Extracting: {r.url}")
         stockList = []
         for line in r.text.splitlines():
@@ -38,13 +51,15 @@ def getETFInfo(key):
                 continue
             data = json.loads(line[30:-1])
             for holding in data:
-                #print(holding)
-                #goal = re.search(r'<[^>]>', holding[1])
                 name = getName(holding[0])
-                ticker = cleanHTML(holding[1])
+
+                stockTicker = cleanHTML(holding[1])
+                stockTicker = getTicker(stockTicker)
+
                 weight = getWeight(cleanHTML(holding[3]))
-                newStock = stock(name, ticker, weight)
+                newStock = stock(name, stockTicker, weight)
                 stockList.append(newStock)
             break
+        getTotalWeight(ETFTicker, stockList)
         return stockList
 

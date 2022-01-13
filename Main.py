@@ -2,18 +2,20 @@ from ETFInfo import *
 from FinClasses import *
 from FinClasses import *
 from ExcelTools import *
+from FinTools import *
 
 def main(fileName):
-    etfList = importFromExcel(fileName)
-    for etf in etfList:
-        holdings = getETFInfo(etf.getTicker())
-        etf.setHoldings(holdings)
-    for etf in etfList:
-        weight = 0.0
-        for stock in etf.getHoldings():
-            weight += stock.getWeight()
-        print(etf.getTicker(), weight)
-        print("--------------------------")
+    ETFList = importFromExcel(fileName)
+    for ETF in ETFList:
+        holdings = getETFInfo(ETF.getTicker())
+        ETF.setHoldings(holdings)
+    print("----------------------------------------------------")
+    print("Portfolio stock weights, printing stocks over 1%")
+    stockWeights = totalWeights(ETFList)
+    for stock in stockWeights:
+        if stock.getWeight() > 1:
+            print(stock.getTicker(), str(stock.getWeight()) + "%")
+
 
 
 main("Current Portfolio.xlsx")

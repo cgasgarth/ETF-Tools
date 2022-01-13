@@ -10,13 +10,16 @@ class stock():
     def getWeight(self):
         return self.weight
     
+    def setWeight(self, weight):
+        self.weight = weight
+
     def getName(self):
         return self.name
 
 class ETF():
     def __init__(self, ticker, weight):
         self.ticker = ticker
-        self.weighting = weight
+        self.weight = weight
         self.holdings = []
     
     def setHoldings(self, holdings):
@@ -25,5 +28,8 @@ class ETF():
     def getTicker(self):
         return self.ticker
     
+    def getWeight(self):
+        return self.weight
+
     def getHoldings(self):
         return self.holdings
