@@ -30,3 +30,10 @@ def totalWeights(ETFList):
     sortByWeight(stockList)
     return stockList
 
+def getNumHoldings(ETFList):
+    stockList = []
+    for ETF in ETFList:
+        ETFWeight = ETF.getWeight()
+        for stock in ETF.getHoldings():
+            addStock(stock, stockList, ETFWeight)
+    return len(stockList)

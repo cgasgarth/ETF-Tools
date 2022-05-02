@@ -51,6 +51,7 @@ def getETFInfo(ETFTicker):
                 continue
             data = json.loads(line[30:-1])
             for holding in data:
+                # print(holding)
                 name = getName(holding[0])
 
                 stockTicker = cleanHTML(holding[1])
