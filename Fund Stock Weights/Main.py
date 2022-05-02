@@ -1,4 +1,4 @@
-from WebScraper import *
+from StockWebScraper import *
 from FinClasses import *
 from FinClasses import *
 from ExcelTools import *
@@ -20,4 +20,4 @@ def main(fileName):
             print(stock.getName(), stock.getTicker(), str(round(stock.getWeight(), 2)) + "%")
     print(getNumHoldings(ETFList))
 
-main("Current Portfolio.xlsx")
+main("../Current Portfolio.xlsx")
