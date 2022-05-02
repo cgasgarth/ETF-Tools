@@ -63,4 +63,3 @@ def getETFInfo(ETFTicker):
             break
         getTotalWeight(ETFTicker, stockList)
         return stockList
-
