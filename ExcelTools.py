@@ -1,5 +1,5 @@
 import openpyxl
-from FinClasses import *
+from FinClasses import ETF
 
 
 def importFromExcel(fileName):

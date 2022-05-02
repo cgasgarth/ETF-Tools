@@ -21,6 +21,7 @@ class ETF():
         self.ticker = ticker
         self.weight = weight
         self.holdings = []
+        self.jsonList = []
     
     def setHoldings(self, holdings):
         self.holdings = holdings
@@ -33,3 +34,28 @@ class ETF():
 
     def getHoldings(self):
         return self.holdings
+    
+
+    def setJsonList(self, jsonList):
+        self.jsonList = jsonList
+    
+    def getJsonList(self):
+        return self.jsonList
+    
+    def getRegionJSON(self):
+        return self.jsonList[0]
+    
+    def getCountryJSON(self):
+        return self.jsonList[1]
+    
+    def getSectorJSON(self):
+        return self.jsonList[2]
+    
+    def getMarketCapJSON(self):
+        return self.jsonList[3]
+    
+
+
+    #override print function
+    def __str__(self):
+        return self.ticker
