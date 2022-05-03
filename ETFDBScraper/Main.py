@@ -12,7 +12,10 @@ def main(fileName):
     for ETF in ETFs:
         jsonList = getJSONS(ETF.getTicker())
         ETF.setJsonList(jsonList)
-    for json in ETFs[0].getJsonList():
+    firstETF = ETFs[0]
+    firstETFJSON = firstETF.getCountryJSON()
+    #print each json inside this json object
+    for json in firstETFJSON:
         print(json)
 
 main("../Current Portfolio.xlsx")
