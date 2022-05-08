@@ -1,5 +1,7 @@
 import requests
 import json
+import sys
+sys.path.insert(0, "../SharedTools")
 from FinClasses import *
 
 headers = {
