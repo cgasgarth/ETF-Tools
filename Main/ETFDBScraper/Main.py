@@ -1,5 +1,6 @@
-from ETFDBScraper import *
 import sys
+
+from ETFDBScraper import *
 
 sys.path.insert(0, "../SharedTools")
 from ExcelTools import *

@@ -1,6 +1,8 @@
 import sys
+
 sys.path.insert(0, "../SharedTools")
 from FinClasses import *
+
 
 def sortByWeight(stockList): #sort the stocklist by weighting of the stock
     # Traverse through 1 to len(arr)

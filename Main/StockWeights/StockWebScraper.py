@@ -1,6 +1,8 @@
-import requests
 import json
 import sys
+
+import requests
+
 sys.path.insert(0, "../SharedTools")
 from FinClasses import *
 

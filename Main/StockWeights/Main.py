@@ -1,10 +1,11 @@
-from StockWebScraper import *
-from FinTools import *
 import sys
+
+from FinTools import *
+from StockWebScraper import *
+
 sys.path.insert(0, "../SharedTools")
 from ExcelTools import *
 from FinClasses import *
-
 
 
 def main(fileName):
